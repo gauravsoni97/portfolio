@@ -2,7 +2,7 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div>Lets start
+    <div>checking auto deploy
 
     </div>
   )
