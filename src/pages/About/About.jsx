@@ -5,7 +5,6 @@ const About = () => {
   return (
     <section>
       <h2>About Me</h2>
-      {/* Add your bio, mission, etc. */}
     </section>
   );
 };
