@@ -17,7 +17,7 @@ export default function Home() {
 
       <section
         id="projects"
-        className="relative scroll-mt-28 overflow-hidden py-16 md:py-24"
+        className="relative scroll-mt-28 py-16 md:py-24 lg:py-32"
       >
         <Parallax
           speed={0.2}

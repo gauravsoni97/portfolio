@@ -36,7 +36,7 @@ html.lenis,
 body,
 html.lenis body {
   scroll-behavior: auto;
-  overflow-x: hidden !important;
+  overflow-x: clip !important;
   max-width: 100%;
   width: 100%;
 }
@@ -49,7 +49,7 @@ body {
 }
 
 main {
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   max-width: 100%;
 }

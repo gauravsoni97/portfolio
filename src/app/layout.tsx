@@ -37,10 +37,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full w-full max-w-full flex-col overflow-x-hidden bg-background text-foreground">
         <SmoothScroll>
-          <div className="w-full max-w-full overflow-x-hidden">
+          <div className="w-full max-w-full overflow-x-clip">
             <ScrollProgress />
             <Header />
-            <main className="flex-1 overflow-x-hidden">{children}</main>
+            <main className="flex-1 overflow-x-clip">{children}</main>
             <Footer />
           </div>
         </SmoothScroll>
