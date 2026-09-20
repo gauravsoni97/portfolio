@@ -118,12 +118,13 @@ export const skillGroups = [
   },
   {
     number: "04",
-    title: "AI & Practices",
+    title: "AI-Assisted Development",
+    items: ["Cursor", "GitHub Copilot", "Google Antigravity", "Windsurf"],
+  },
+  {
+    number: "05",
+    title: "Practices",
     items: [
-      "Cursor",
-      "GitHub Copilot",
-      "Google Antigravity",
-      "Windsurf",
       "Responsive Web Design",
       "SEO Optimization",
       "Performance Optimization",
