@@ -1,0 +1,42 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/work"
+  to = "/#experience"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/work/"
+  to = "/#experience"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects"
+  to = "/#projects"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/projects/"
+  to = "/#projects"
+  status = 301
+  force = true

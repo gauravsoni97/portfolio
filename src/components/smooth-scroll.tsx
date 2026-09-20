@@ -8,6 +8,12 @@ function HashScroll() {
   const lenis = useLenis();
 
   useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const section = document.getElementById(hash);
+      if (section) smoothScrollTo(lenis, section, -100);
+    }
+
     const onClick = (event: MouseEvent) => {
       const link = (event.target as HTMLElement | null)?.closest("a");
       if (!link) return;

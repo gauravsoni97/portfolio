@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { ClientRedirect } from "@/components/client-redirect";
 
 export default function WorkPage() {
-  redirect("/#experience");
+  return <ClientRedirect to="/#experience" />;
 }
