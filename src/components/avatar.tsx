@@ -33,7 +33,7 @@ export function Avatar({
         fill
         priority={priority}
         sizes="(min-width: 1024px) 46vw, 70vw"
-        className="object-cover object-top"
+        className="object-cover object-[center_18%]"
       />
     </div>
   );

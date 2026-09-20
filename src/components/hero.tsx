@@ -1,71 +1,52 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { animate, motion, useInView, useMotionValue, useMotionValueEvent } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { useLenis } from "lenis/react";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import Image from "next/image";
+import { Download } from "lucide-react";
 import { HeroSocials } from "@/components/hero-socials";
 import { ScrollHint } from "@/components/parallax";
-import { SkillIcon } from "@/components/skill-icon";
 import { ButtonLink, Container } from "@/components/ui";
-import { heroStats, site } from "@/data/content";
+import { heroStats, images, site } from "@/data/content";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const fade = {
-  hidden: { opacity: 0, y: 18 },
-  show: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, delay, ease },
-  }),
-};
-
-const floatingSkills = [
-  { name: "React.js", top: "10%", left: "6%", size: 30, duration: 16, x: 16, y: -14 },
-  { name: "Next.js", top: "18%", right: "8%", size: 28, duration: 20, x: -14, y: 16 },
-  { name: "TypeScript", top: "40%", left: "3%", size: 26, duration: 18, x: 12, y: 18 },
-  { name: "JavaScript", bottom: "26%", left: "8%", size: 26, duration: 22, x: -12, y: -16 },
-  { name: "Tailwind CSS", top: "26%", left: "16%", size: 22, duration: 19, x: 10, y: 12 },
-  { name: "Redux Toolkit", bottom: "18%", right: "6%", size: 24, duration: 17, x: -10, y: 14 },
-  { name: "HTML5", top: "52%", right: "4%", size: 22, duration: 21, x: 14, y: -10 },
-  { name: "CSS3", bottom: "10%", left: "18%", size: 22, duration: 23, x: 14, y: -8 },
-  { name: "Git", top: "8%", right: "24%", size: 20, duration: 15, x: -8, y: 12 },
-  { name: "Figma", bottom: "34%", left: "2%", size: 22, duration: 19, x: 16, y: 10 },
-  { name: "Firebase", top: "64%", left: "7%", size: 20, duration: 24, x: -8, y: 12 },
-  { name: "GitHub", bottom: "12%", right: "16%", size: 22, duration: 18, x: 12, y: -16 },
-  { name: "Cursor", top: "36%", right: "14%", size: 20, duration: 20, x: -14, y: 8 },
-  { name: "SCSS/SASS", bottom: "8%", right: "38%", size: 18, duration: 26, x: 8, y: -12 },
-];
-
-function HeroSkillField() {
+function IndiaFlag() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {floatingSkills.map((item, index) => (
-        <motion.div
-          key={`${item.name}-${index}`}
-          className="absolute opacity-[0.2]"
-          style={{
-            top: item.top,
-            left: item.left,
-            right: item.right,
-            bottom: item.bottom,
-          }}
-          animate={{
-            x: [0, item.x, -item.x * 0.55, 0],
-            y: [0, item.y, -item.y * 0.45, 0],
-            rotate: [0, 10, -8, 0],
-          }}
-          transition={{
-            duration: item.duration,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: index * 0.3,
-          }}
-        >
-          <SkillIcon name={item.name} size={item.size} />
-        </motion.div>
-      ))}
-    </div>
+    <svg
+      viewBox="0 0 21 15"
+      className="h-3.5 w-5 shrink-0 overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(255,255,255,0.15)]"
+      aria-hidden
+    >
+      <rect width="21" height="5" fill="#FF9933" />
+      <rect y="5" width="21" height="5" fill="#FFFFFF" />
+      <rect y="10" width="21" height="5" fill="#138808" />
+      <circle cx="10.5" cy="7.5" r="1.55" fill="none" stroke="#000080" strokeWidth="0.45" />
+      {Array.from({ length: 12 }).map((_, index) => {
+        const angle = (index * 30 * Math.PI) / 180;
+        return (
+          <line
+            key={index}
+            x1="10.5"
+            y1="7.5"
+            x2={10.5 + Math.cos(angle) * 1.35}
+            y2={7.5 + Math.sin(angle) * 1.35}
+            stroke="#000080"
+            strokeWidth="0.22"
+          />
+        );
+      })}
+    </svg>
   );
 }
 
@@ -83,155 +64,180 @@ function AnimatedStat({ value, label }: { value: string; label: string }) {
 
   useEffect(() => {
     if (!inView || Number.isNaN(numeric)) return;
-    const controls = animate(count, numeric, {
-      duration: 1.5,
-      ease: [0.22, 1, 0.36, 1],
-    });
+    const controls = animate(count, numeric, { duration: 1.4, ease });
     return () => controls.stop();
   }, [count, inView, numeric]);
 
   return (
-    <div ref={ref}>
-      <p className="font-display text-[28px] leading-none tracking-tight md:text-[32px]">
+    <div ref={ref} className="min-w-0">
+      <p className="font-display text-[26px] leading-none tracking-tight text-white md:text-[30px]">
         {Number.isNaN(numeric) ? value : display}
       </p>
-      <p className="mt-1.5 text-xs text-muted">{label}</p>
+      <p className="mt-1.5 text-[10px] uppercase tracking-[0.16em] text-muted">{label}</p>
     </div>
   );
 }
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const raw = useMotionValue(0);
+  const progress = useSpring(raw, { stiffness: 90, damping: 22, mass: 0.35 });
+
+  useLenis(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    raw.set(Math.min(1, Math.max(0, -el.getBoundingClientRect().top / Math.max(1, el.offsetHeight * 0.7))));
+  });
+
+  const textY = useTransform(progress, [0, 1], [0, reduce ? 0 : -22]);
+  const photoY = useTransform(progress, [0, 1], [0, reduce ? 0 : 28]);
+  const fade = useTransform(progress, [0, 0.75, 1], [1, 0.88, 0.36]);
+
   return (
-    <section className="relative flex min-h-[calc(100svh-92px)] items-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="hero-orb hero-orb-mint absolute left-1/2 top-10 h-80 w-80 -translate-x-1/2" />
-        <div className="hero-orb hero-orb-blue absolute bottom-0 left-[12%] h-56 w-56" />
-        <HeroSkillField />
+    <section
+      ref={sectionRef}
+      className="relative -mt-[88px] flex min-h-svh items-center overflow-hidden bg-black pt-[88px] md:-mt-[92px] md:pt-[92px]"
+    >
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-[38%]">
+        <div className="absolute left-0 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(200,230,181,0.12),transparent_70%)]" />
       </div>
 
-      <Container className="relative z-10 flex w-full flex-col items-center py-10 text-center">
-        <motion.p
-          custom={0}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="text-lg text-white/65 md:text-2xl"
-        >
-          Hey, I am
-        </motion.p>
+      <motion.div
+        style={{ y: photoY, opacity: fade }}
+        className="pointer-events-none absolute inset-y-[12%] left-[34%] right-0 z-[1] hidden items-center justify-center lg:flex"
+      >
+        <div className="hero-photo-soft relative h-full w-full max-w-[820px]">
+          <Image
+            src={images.hero}
+            alt={site.name}
+            fill
+            priority
+            sizes="(min-width: 1024px) 66vw, 92vw"
+            className="object-cover object-center mix-blend-lighten"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#000_0%,rgba(0,0,0,0.72)_22%,transparent_52%)]" />
+        </div>
+      </motion.div>
 
-        <motion.h1
-          custom={0.08}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-2 font-display text-[52px] leading-[0.9] tracking-tight text-mint md:text-[80px]"
-        >
-          {site.name}
-        </motion.h1>
-
-        <motion.p
-          custom={0.16}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-4 text-xl text-white/85 md:text-2xl"
-        >
-          Senior Software Developer
-        </motion.p>
-
-        <motion.p
-          custom={0.24}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-3 inline-flex items-center gap-2.5 text-sm uppercase tracking-[0.18em] text-muted"
-        >
-          Gurugram, Haryana, India
-          <svg
-            viewBox="0 0 21 15"
-            className="h-3.5 w-5 shrink-0 overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(255,255,255,0.15)]"
-            aria-hidden
-          >
-            <rect width="21" height="5" fill="#FF9933" />
-            <rect y="5" width="21" height="5" fill="#FFFFFF" />
-            <rect y="10" width="21" height="5" fill="#138808" />
-            <circle cx="10.5" cy="7.5" r="1.55" fill="none" stroke="#000080" strokeWidth="0.45" />
-            {Array.from({ length: 12 }).map((_, index) => {
-              const angle = (index * 30 * Math.PI) / 180;
-              return (
-                <line
-                  key={index}
-                  x1="10.5"
-                  y1="7.5"
-                  x2={10.5 + Math.cos(angle) * 1.35}
-                  y2={7.5 + Math.sin(angle) * 1.35}
-                  stroke="#000080"
-                  strokeWidth="0.22"
-                />
-              );
-            })}
-          </svg>
-        </motion.p>
-
-        <motion.p
-          custom={0.28}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-6 max-w-xl text-[15px] leading-7 text-muted"
-        >
-          {site.heroCopy.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
-        </motion.p>
-
+      <Container className="relative z-10 w-full max-w-[1280px] py-6 md:py-8">
         <motion.div
-          custom={0.36}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          style={{ y: textY, opacity: fade }}
+          className="relative z-10 max-w-xl bg-black lg:max-w-[560px] lg:bg-transparent"
         >
-          <ButtonLink
-            href="/contact"
-            className="gap-3 px-6 uppercase tracking-[0.16em] hover:gap-4"
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease }}
+            className="flex flex-wrap items-center gap-3"
           >
-            Contact me
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-black/10">
-              <ArrowRight size={14} />
+            <span className="inline-flex items-center gap-2 rounded-full border border-mint/30 px-2.5 py-1 text-[10px] uppercase tracking-[0.22em] text-mint">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inset-0 animate-ping rounded-full bg-mint/70" />
+                <span className="relative h-1.5 w-1.5 rounded-full bg-mint" />
+              </span>
+              Available
             </span>
-          </ButtonLink>
-          <ButtonLink href="/#projects" variant="ghost">
-            View work
-          </ButtonLink>
+            <p className="text-[11px] uppercase tracking-[0.28em] text-white/40">Hey, I am</p>
+          </motion.div>
+
+          <h1 className="mt-5 font-display leading-[0.78] tracking-[-0.055em]">
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: "118%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.8, delay: 0.04, ease }}
+                className="block text-[64px] text-white md:text-[96px] xl:text-[112px]"
+              >
+                Gaurav
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: "118%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.8, delay: 0.14, ease }}
+                className="hero-name-stroke block text-[64px] md:text-[96px] xl:text-[112px]"
+              >
+                Soni
+              </motion.span>
+            </span>
+          </h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.26, ease }}
+            className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2"
+          >
+            <p className="text-base text-white/85 md:text-lg">Senior Software Developer</p>
+            <span className="hidden h-3 w-px bg-white/18 sm:block" />
+            <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted">
+              Gurugram, Haryana, India
+              <IndiaFlag />
+            </p>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.34, ease }}
+            className="mt-5 max-w-md text-[15px] leading-7 text-white/75 lg:text-white/55"
+          >
+            {site.heroCopy.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.5, ease }}
+            className="mt-8 flex flex-wrap items-center gap-3"
+          >
+            <ButtonLink
+              href={site.resume}
+              download="Gaurav-Soni-Resume.pdf"
+              className="gap-3 px-6 uppercase tracking-[0.16em] hover:gap-4"
+            >
+              Download resume
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-black/10">
+                <Download size={14} />
+              </span>
+            </ButtonLink>
+            <ButtonLink href="/#projects" variant="ghost">
+              View work
+            </ButtonLink>
+          </motion.div>
+
+          <HeroSocials className="mt-5" />
         </motion.div>
 
-        <motion.div
-          custom={0.44}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-        >
-          <HeroSocials className="mt-7 justify-center" />
-        </motion.div>
+        <div className="hero-photo-soft relative mt-8 h-[38vh] w-full lg:hidden">
+          <Image
+            src={images.hero}
+            alt={site.name}
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_40%] mix-blend-lighten"
+          />
+        </div>
 
         <motion.div
-          custom={0.52}
-          variants={fade}
-          initial="hidden"
-          animate="show"
-          className="mt-12 grid w-full max-w-3xl grid-cols-2 gap-6 border-t border-white/8 pt-8 sm:grid-cols-4"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.58, ease }}
+          className="mt-10 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-5 border-t border-white/8 pt-6 sm:grid-cols-3"
         >
           {heroStats.map((stat) => (
             <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
           ))}
         </motion.div>
-
       </Container>
-      <ScrollHint className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2" />
+
+      <ScrollHint className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2" />
     </section>
   );
 }

@@ -101,7 +101,7 @@ export function ContactDetails() {
               </span>
               <a
                 href={`mailto:${site.email}`}
-                className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-mint"
+                className="inline-flex items-center gap-2 rounded-full bg-mint px-4 py-2 text-sm font-medium text-[#070708] transition-colors hover:bg-[#d7efc8]"
               >
                 Write an email
                 <ArrowUpRight size={14} />

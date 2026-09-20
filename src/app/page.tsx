@@ -21,7 +21,7 @@ export default function Home() {
       >
         <Parallax
           speed={0.2}
-          className="pointer-events-none absolute right-[-8%] top-10 h-64 w-64"
+          className="pointer-events-none absolute right-0 top-10 h-64 w-64"
         >
           <div className="h-full w-full rounded-full bg-mint/8 blur-3xl" />
         </Parallax>
@@ -32,7 +32,7 @@ export default function Home() {
               eyebrow="Selected work"
               title="Projects"
               watermark="Projects"
-              description="Two builds I shipped end to end — click a card to see the details."
+              description="Two builds I shipped end to end — open a case to see the details."
             />
           </Reveal>
           <ProjectsGrid projects={projects} />
@@ -45,7 +45,7 @@ export default function Home() {
       >
         <Parallax
           speed={0.22}
-          className="pointer-events-none absolute -left-24 top-24 h-64 w-64"
+          className="pointer-events-none absolute left-0 top-24 h-64 w-64"
         >
           <div className="h-full w-full rounded-full bg-mint/8 blur-3xl" />
         </Parallax>
@@ -65,11 +65,11 @@ export default function Home() {
 
       <section
         id="experience"
-        className="relative scroll-mt-28 py-16 md:py-24"
+        className="relative scroll-mt-28 overflow-hidden py-16 md:py-24"
       >
         <Parallax
           speed={0.18}
-          className="pointer-events-none absolute right-[-10%] top-32 h-72 w-72"
+          className="pointer-events-none absolute right-0 top-32 h-72 w-72"
         >
           <div className="h-full w-full rounded-full bg-mint/10 blur-3xl" />
         </Parallax>
@@ -89,7 +89,7 @@ export default function Home() {
 
       <section
         id="testimonials"
-        className="relative scroll-mt-28 overflow-x-clip py-16 md:py-24"
+        className="relative scroll-mt-28 overflow-hidden py-16 md:py-24"
       >
         <Container>
           <Reveal from="left">
@@ -105,7 +105,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="py-16 md:py-24">
+      <section className="overflow-hidden py-16 md:py-24">
         <Container>
           <Reveal from="left">
             <SectionHeading

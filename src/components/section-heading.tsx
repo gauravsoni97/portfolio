@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { SectionMark } from "@/components/parallax";
 import { cn } from "@/lib/cn";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -10,7 +9,6 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function SectionHeading({
   title,
   eyebrow,
-  watermark,
   description,
   index,
   href,
@@ -25,47 +23,53 @@ export function SectionHeading({
   hrefLabel?: string;
 }) {
   return (
-    <div className="relative mb-10 pt-6 md:mb-12 md:pt-8">
-      <SectionMark text={watermark ?? title} />
+    <div className="relative mb-10 overflow-hidden md:mb-12">
+      <div className="flex items-start gap-4 md:gap-6">
+        {index && (
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, ease }}
+            className="mt-2 font-display text-sm tracking-[0.22em] text-mint md:mt-3"
+          >
+            {index}
+          </motion.span>
+        )}
 
-      <div className="relative z-10">
-        <div className="mb-4 flex items-center gap-3">
-          {index && (
-            <span className="font-display text-sm tracking-[0.2em] text-mint">
-              {index}
-            </span>
+        <div className="min-w-0 flex-1">
+          {eyebrow && (
+            <p className="mb-2 text-[11px] uppercase tracking-[0.24em] text-white/40">
+              {eyebrow}
+            </p>
           )}
+
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-[40px] leading-[0.88] tracking-[-0.03em] text-white md:text-[60px]">
+              {title}
+            </h2>
+            {href && (
+              <Link
+                href={href}
+                className="mb-1 text-sm text-muted transition-colors hover:text-white"
+              >
+                {hrefLabel}
+              </Link>
+            )}
+          </div>
+
           <motion.span
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease }}
-            className="h-px flex-1 origin-left bg-gradient-to-r from-mint/50 via-white/10 to-transparent"
+            transition={{ duration: 0.7, delay: 0.08, ease }}
+            className="mt-4 block h-px max-w-40 origin-left bg-mint/55 md:max-w-56"
           />
-          {eyebrow && (
-            <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/45">
-              {eyebrow}
-            </span>
+
+          {description && (
+            <p className="mt-4 max-w-lg text-sm leading-7 text-muted">{description}</p>
           )}
         </div>
-
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-[42px] leading-[0.86] tracking-tight md:text-[64px]">
-            {title}
-          </h2>
-          {href && (
-            <Link
-              href={href}
-              className="mb-1 text-sm text-muted transition-colors hover:text-white"
-            >
-              {hrefLabel}
-            </Link>
-          )}
-        </div>
-
-        {description && (
-          <p className="mt-4 max-w-xl text-sm leading-7 text-muted">{description}</p>
-        )}
       </div>
     </div>
   );
@@ -81,14 +85,14 @@ export function PageHero({
   className?: string;
 }) {
   return (
-    <div className={cn("relative pb-10 pt-10 md:pb-14 md:pt-16", className)}>
-      <SectionMark text={eyebrow} className="-left-3 top-[-0.15em]" />
-      <p className="relative z-10 mb-4 text-[11px] uppercase tracking-[0.22em] text-mint">
+    <div className={cn("relative overflow-hidden pb-10 pt-10 md:pb-14 md:pt-16", className)}>
+      <p className="relative z-10 mb-3 text-[11px] uppercase tracking-[0.24em] text-mint">
         {eyebrow}
       </p>
-      <h1 className="relative z-10 max-w-4xl font-display text-[48px] leading-[0.9] tracking-tight md:text-[80px]">
+      <h1 className="relative z-10 max-w-4xl font-display text-[48px] leading-[0.88] tracking-[-0.03em] md:text-[80px]">
         {title}
       </h1>
+      <span className="mt-5 block h-px max-w-40 bg-mint/55" />
     </div>
   );
 }

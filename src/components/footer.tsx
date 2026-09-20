@@ -12,7 +12,7 @@ const icons = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/6 py-8 md:py-10">
+    <footer className="overflow-hidden border-t border-white/6 py-8 md:py-10">
       <Container className="flex items-center justify-between gap-6">
         <p className="text-sm text-muted">
           © {new Date().getFullYear()} {site.name}

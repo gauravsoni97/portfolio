@@ -15,6 +15,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/gauravsoni97",
   github: "https://github.com/gauravsoni97",
   portfolio: "https://www.cvtoportfolio.com",
+  resume: "/Gaurav-Soni-Resume.pdf",
   whatsapp: "https://wa.me/918053340056",
   heroIntro: "Hey, I'm Gaurav.",
   heroTitle: ["Senior", "Software", "ENGINEER"],
@@ -27,9 +28,8 @@ export const site = {
 
 export const heroStats = [
   { value: "5+", label: "Years Experience" },
-  { value: "4+", label: "White-labeled products" },
   { value: "85%", label: "Faster task delivery" },
-  { value: "95%", label: "SEO score achieved" },
+  { value: "Expert", label: "UI development & animation" },
 ];
 
 export const nav = [
@@ -87,8 +87,8 @@ export const testimonials = [
 ];
 
 export const images = {
-  avatar: "/images/avatar.png",
-  hero: "https://framerusercontent.com/images/XCqWYxteIPYJYNArENN1AbNOCsE.png",
+  avatar: "/images/avatar.jpg",
+  hero: "/images/hero-desk.jpg",
   about: "https://framerusercontent.com/images/LMu5zgZjQMgv1Ve9Hu8XDR553o.jpg",
 };
 

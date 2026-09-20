@@ -33,14 +33,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${halant.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${halant.variable} h-full overflow-x-hidden antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-background text-foreground">
+      <body className="flex min-h-full w-full max-w-full flex-col overflow-x-hidden bg-background text-foreground">
         <SmoothScroll>
-          <ScrollProgress />
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <div className="w-full max-w-full overflow-x-hidden">
+            <ScrollProgress />
+            <Header />
+            <main className="flex-1 overflow-x-hidden">{children}</main>
+            <Footer />
+          </div>
         </SmoothScroll>
       </body>
     </html>

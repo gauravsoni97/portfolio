@@ -6,10 +6,10 @@ import { Reveal } from "@/components/reveal";
 
 export function WorkTogether() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="overflow-hidden py-16 md:py-24">
       <Container>
         <GlowCard className="relative overflow-hidden rounded-[32px] p-8 md:p-14">
-          <SectionMark text="Together" className="-left-6 top-[-0.2em]" />
+          <SectionMark text="Together" className="top-[-0.2em]" />
           <Parallax
             speed={0.24}
             className="pointer-events-none absolute -right-16 -top-16 h-56 w-56"

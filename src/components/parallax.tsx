@@ -95,7 +95,7 @@ export function ParallaxText({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const progress = useMotionValue(0);
-  const x = useTransform(progress, [0, 1], [-28, 28]);
+  const x = useTransform(progress, [0, 1], [-8, 8]);
 
   useLenis(({ scroll }) => {
     const el = ref.current;
@@ -123,11 +123,11 @@ export function SectionMark({
   return (
     <ParallaxText
       className={cn(
-        "pointer-events-none absolute -left-4 top-[-0.62em] z-0 w-[150%] select-none",
+        "pointer-events-none absolute inset-x-0 top-[-0.55em] z-0 overflow-hidden select-none",
         className,
       )}
     >
-      <p className="section-mark font-display text-[72px] leading-none tracking-tight sm:text-[96px] md:text-[128px] lg:text-[148px]">
+      <p className="section-mark max-w-full truncate font-display text-[64px] leading-none tracking-tight sm:text-[88px] md:text-[112px]">
         {text}
       </p>
     </ParallaxText>

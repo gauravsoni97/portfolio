@@ -22,20 +22,34 @@ export function ButtonLink({
   children,
   variant = "primary",
   className,
+  download,
 }: {
   href: string;
   children: React.ReactNode;
   variant?: "primary" | "ghost";
   className?: string;
+  download?: boolean | string;
 }) {
   const classNames = cn(
     "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-all duration-300",
     variant === "primary" &&
-      "bg-foreground text-background hover:bg-mint hover:shadow-[0_0_28px_rgba(200,230,181,0.25)]",
+      "bg-mint text-[#070708] hover:bg-[#d7efc8] hover:shadow-[0_0_28px_rgba(200,230,181,0.28)]",
     variant === "ghost" &&
-      "border border-white/12 bg-white/[0.02] text-foreground hover:border-white/30 hover:bg-white/6",
+      "border border-mint/25 bg-mint/[0.04] text-mint hover:border-mint/50 hover:bg-mint/10",
     className,
   );
+
+  if (download) {
+    return (
+      <a
+        href={href}
+        download={download === true ? true : download}
+        className={classNames}
+      >
+        {children}
+      </a>
+    );
+  }
 
   if (href.startsWith("http")) {
     return (

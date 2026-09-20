@@ -9,10 +9,10 @@ type RevealFrom = "up" | "left" | "right" | "scale";
 
 const initials: Record<RevealFrom, { opacity: number; x?: number; y?: number; scale?: number }> =
   {
-    up: { opacity: 0, y: 40 },
-    left: { opacity: 0, x: -48 },
-    right: { opacity: 0, x: 48 },
-    scale: { opacity: 0, y: 24, scale: 0.96 },
+    up: { opacity: 0, y: 32 },
+    left: { opacity: 0, y: 28 },
+    right: { opacity: 0, y: 28 },
+    scale: { opacity: 0, y: 20, scale: 0.97 },
   };
 
 type RevealProps = HTMLMotionProps<"div"> & {

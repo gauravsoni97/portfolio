@@ -57,7 +57,8 @@ export function Header() {
   };
 
   return (
-    <div className="sticky top-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
+    <>
+    <div className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
       <motion.header
         initial={{ y: -28, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -114,7 +115,7 @@ export function Header() {
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="/contact"
-              className="rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-mint"
+              className="rounded-full bg-mint px-4 py-2 text-sm font-medium text-[#070708] transition-colors hover:bg-[#d7efc8]"
             >
               Contact
             </Link>
@@ -187,7 +188,7 @@ export function Header() {
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="inline-flex rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background"
+                  className="inline-flex rounded-full bg-mint px-4 py-2 text-sm font-medium text-[#070708]"
                 >
                   Contact
                 </Link>
@@ -197,5 +198,7 @@ export function Header() {
         )}
       </AnimatePresence>
     </div>
+    <div className="h-[88px] shrink-0 md:h-[92px]" aria-hidden />
+    </>
   );
 }
