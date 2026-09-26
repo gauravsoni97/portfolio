@@ -56,32 +56,18 @@ export const socials = [
 
 export const testimonials = [
   {
-    name: "Rahul M.",
-    role: "Product Lead, EdTech",
-    linkedin: site.linkedin,
+    name: "Niranjan Patil",
+    role: "Connect Lab · LinkedIn recommendation",
+    linkedin: "https://www.linkedin.com/in/connectnp/",
     quote:
-      "Gaurav ships frontend work that stays stable under pressure. The proctored exam flow and live classroom UI felt production-ready, not experimental.",
+      "Gaurav was a fresher when I was working with him. He worked hard to achieve deadlines and cope with the startup environment.",
   },
   {
-    name: "Ananya K.",
-    role: "Engineering Manager",
-    linkedin: site.linkedin,
+    name: "Kailash Chandra",
+    role: "Bounteous x Accolite · LinkedIn recommendation",
+    linkedin: "https://www.linkedin.com/in/techkailash/",
     quote:
-      "Clean components, fast delivery, and a sharp eye for edge cases. He improved our dashboard tables, filters, and overall UI consistency without slowing the team down.",
-  },
-  {
-    name: "Vikram S.",
-    role: "QA Lead",
-    linkedin: site.linkedin,
-    quote:
-      "Bugs got fixed with context, not guesswork. The Next.js migration and SEO jump made a visible difference in how the product loaded and ranked.",
-  },
-  {
-    name: "Neha P.",
-    role: "Design Partner",
-    linkedin: site.linkedin,
-    quote:
-      "He translates Figma into interfaces that still feel considered on mobile. Collaboration was easy, and the final UI matched the intent of the design.",
+      "It was a pleasure working with Gaurav. I was consistently impressed by his deep understanding and skill in frontend development. He possesses a sharp ability to tackle complex technical challenges and deliver high-quality, efficient solutions.\n\nBeyond his technical expertise, Gaurav is an incredibly supportive team member. He was always willing to lend a hand and share his knowledge, making him a valuable resource for everyone on the team. He would be a great asset to any organization, and I highly recommend him.",
   },
 ];
 
