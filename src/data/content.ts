@@ -297,7 +297,7 @@ export const projects = [
       "A PWA that splits a UPI amount into ₹1,999 QR payments so each scan stays under the ₹2,000 limit.",
     image: "/images/upi-splitter.jpg",
     logo: "/images/upi-splitter.jpg",
-    href: "",
+    href: "https://upisplitter.netlify.app/",
     skills: ["React JS", "Tailwind CSS", "Firebase"],
     password: "",
     bullets: [
@@ -314,7 +314,7 @@ export const projects = [
       "A city-search weather dashboard with live conditions, location details, and a full-bleed atmospheric background.",
     image: "/images/weather-app-mockup.jpg",
     logo: "/images/weather-app-mockup.jpg",
-    href: "https://whatsweathernew.netlify.app",
+    href: "https://whatisweathernow.netlify.app/",
     skills: ["HTML/CSS", "React JS"],
     password: "",
     bullets: [
@@ -331,7 +331,7 @@ export const projects = [
       "A resin-art studio site for Dimple Soni — wedding varmalas, bridal bouquets, and keepsakes cast in museum-grade resin.",
     image: "/images/preserve-special-moments.jpg",
     logo: "/images/preserve-special-moments.jpg",
-    href: "",
+    href: "https://preservespecialmoments.netlify.app/",
     skills: ["HTML/CSS", "JavaScript"],
     password: "",
     bullets: [
