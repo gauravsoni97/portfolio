@@ -60,16 +60,14 @@ export function Header() {
 
   return (
     <>
-    <div className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
+    <div className="fixed inset-x-0 top-0 z-50 bg-black px-3 pt-3 md:px-5 md:pt-4">
       <motion.header
         initial={{ y: -28, opacity: 0 }}
         animate={ready ? { y: 0, opacity: 1 } : { y: -28, opacity: 0 }}
         transition={{ duration: 0.55, ease }}
         className={cn(
-          "mx-auto flex h-[68px] w-full max-w-[1180px] items-center justify-between rounded-full border px-4 backdrop-blur-2xl transition-colors duration-500 md:px-6",
-          scrolled
-            ? "border-white/12 bg-black/70"
-            : "border-white/8 bg-black/45",
+          "mx-auto flex h-[68px] w-full max-w-[1180px] items-center justify-between rounded-full border bg-black px-4 transition-colors duration-500 md:px-6",
+          scrolled ? "border-white/12" : "border-white/8",
         )}
       >
         <Link

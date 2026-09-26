@@ -125,6 +125,11 @@ body::before {
   mask-repeat: no-repeat;
 }
 
+.hero-photo-mobile {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+}
+
 .hero-photo-soft {
   -webkit-mask-image:
     linear-gradient(to right, transparent 0%, #000 22%, #000 86%, transparent 100%),

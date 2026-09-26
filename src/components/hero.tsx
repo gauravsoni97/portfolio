@@ -101,9 +101,7 @@ export function Hero() {
       ref={sectionRef}
       className="relative -mt-[88px] flex min-h-svh items-center overflow-hidden bg-black pt-[88px] md:-mt-[92px] md:pt-[92px]"
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-[38%]">
-        <div className="absolute left-0 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(200,230,181,0.12),transparent_70%)]" />
-      </div>
+      <div className="pointer-events-none absolute inset-0 bg-black" />
 
       <motion.div
         initial={{ opacity: 0, scale: 1.06 }}
@@ -211,16 +209,16 @@ export function Hero() {
             </ButtonLink>
           </motion.div>
 
-          <HeroSocials className="mt-5" />
+          <HeroSocials className="mt-5 mb-10" />
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
           transition={{ duration: 0.9, delay: 0.1, ease }}
-          className="relative mt-8 h-[38vh] w-full lg:hidden"
+          className="relative mt-2 h-[38vh] w-full bg-black lg:hidden"
         >
-          <div className="hero-photo-soft absolute inset-0">
+          <div className="hero-photo-mobile absolute inset-0">
             <Image
               src={images.hero}
               alt={site.name}
