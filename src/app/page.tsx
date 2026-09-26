@@ -56,7 +56,7 @@ export default function Home() {
               eyebrow="Toolkit"
               title="Skills"
               watermark="Skills"
-              description="The stack I use most — from markup and React to AI-assisted delivery."
+              description="A frontend-first stack — from markup and React to performance, a11y, and AI-assisted delivery."
             />
           </Reveal>
           <SkillsGrid />
