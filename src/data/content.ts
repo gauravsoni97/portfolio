@@ -85,6 +85,16 @@ export const skillGroups = [
   },
   {
     number: "02",
+    title: "Tools & Platforms",
+    items: ["Git", "GitHub", "Firebase", "Figma", "WordPress", "Postman"],
+  },
+  {
+    number: "03",
+    title: "AI-Assisted Development",
+    items: ["Cursor", "GitHub Copilot", "Google Antigravity", "Windsurf"],
+  },
+  {
+    number: "04",
     title: "Frameworks & Libraries",
     items: [
       "React.js",
@@ -95,16 +105,6 @@ export const skillGroups = [
       "Material UI",
       "Bootstrap",
     ],
-  },
-  {
-    number: "03",
-    title: "Tools & Platforms",
-    items: ["Git", "GitHub", "Firebase", "Figma", "WordPress", "Postman"],
-  },
-  {
-    number: "04",
-    title: "AI-Assisted Development",
-    items: ["Cursor", "GitHub Copilot", "Google Antigravity", "Windsurf"],
   },
   {
     number: "05",
