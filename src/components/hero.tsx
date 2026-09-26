@@ -196,7 +196,7 @@ export function Hero() {
           >
             <ButtonLink
               href={site.resume}
-              download="Gaurav-Soni-Resume.pdf"
+              download="Gaurav_Soni_Frontend_Developer_Resume.pdf"
               className="gap-3 px-6 uppercase tracking-[0.16em] hover:gap-4"
             >
               Download resume

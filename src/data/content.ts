@@ -15,7 +15,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/gauravsoni97",
   github: "https://github.com/gauravsoni97",
   portfolio: "https://www.cvtoportfolio.com",
-  resume: "/Gaurav-Soni-Resume.pdf",
+  resume: "/Gaurav_Soni_Frontend_Developer_Resume.pdf",
   whatsapp: "https://wa.me/918053340056",
   heroIntro: "Hey, I'm Gaurav.",
   heroTitle: ["Senior", "Software", "ENGINEER"],
