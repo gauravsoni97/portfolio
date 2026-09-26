@@ -32,7 +32,7 @@ export default function Home() {
               eyebrow="Selected work"
               title="Projects"
               watermark="Projects"
-              description="Two builds I shipped end to end — open a case to see the details."
+              description="Selected builds I shipped end to end — open a case to see the details."
             />
           </Reveal>
           <ProjectsGrid projects={projects} />

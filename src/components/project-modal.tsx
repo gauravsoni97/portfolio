@@ -134,15 +134,17 @@ export function ProjectModal({
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 bg-[#0c0c0e] px-5 py-4 md:px-8">
-              <p className="text-sm text-muted">Live preview</p>
-              <div className="flex flex-wrap gap-2">
-                <ButtonLink href={project.href} className="gap-2">
-                  Open project
-                  <ArrowUpRight size={15} />
-                </ButtonLink>
+            {project.href && (
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/8 bg-[#0c0c0e] px-5 py-4 md:px-8">
+                <p className="text-sm text-muted">Live preview</p>
+                <div className="flex flex-wrap gap-2">
+                  <ButtonLink href={project.href} className="gap-2">
+                    Open project
+                    <ArrowUpRight size={15} />
+                  </ButtonLink>
+                </div>
               </div>
-            </div>
+            )}
           </motion.div>
         </div>
       )}

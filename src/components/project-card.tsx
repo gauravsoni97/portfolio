@@ -16,9 +16,9 @@ export function ProjectCard({
     <button
       type="button"
       onClick={() => onOpen(project)}
-      className="group flex w-full flex-col overflow-hidden rounded-[28px] border border-white/8 bg-[#0c0c0e] text-left shadow-[0_24px_60px_rgba(0,0,0,0.45)] lg:h-[80vh]"
+      className="group flex w-full flex-col overflow-hidden rounded-[28px] border border-white/8 bg-[#0c0c0e] text-left shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
     >
-      <div className="relative aspect-[16/9] overflow-hidden md:aspect-[16/8] lg:min-h-0 lg:flex-1 lg:aspect-auto">
+      <div className="relative aspect-[16/9] overflow-hidden md:aspect-[16/8]">
         <Image
           src={project.image}
           alt={project.title}

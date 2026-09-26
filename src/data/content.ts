@@ -262,9 +262,8 @@ export const projects = [
     category: "AI Product",
     summary:
       "AI-powered app that turns an uploaded PDF resume into a professional portfolio website.",
-    image:
-      "https://framerusercontent.com/images/1PXDPZGG58fxWB1Qd2Lf9Vmi6U.jpg",
-    logo: "https://framerusercontent.com/images/RJcCG4dgT1LbfvrMoDzACIBap4.png",
+    image: "/images/cv-to-portfolio.jpg",
+    logo: "/images/cv-to-portfolio.jpg",
     href: "https://www.cvtoportfolio.com",
     skills: ["React JS", "Gemini AI API"],
     password: "",
@@ -281,14 +280,64 @@ export const projects = [
     category: "Interface",
     summary:
       "A browser-based macOS interface clone with docks, Finder, Spotlight, Safari, and more.",
-    image:
-      "https://framerusercontent.com/images/VXhQjfv1vp5N5GyGhuLHCnILwA.jpg",
-    logo: "https://framerusercontent.com/images/g28Q0l1fkWXQ0uF5sAsDpjOQqE.png",
+    image: "/images/macos-ui.jpg",
+    logo: "/images/macos-ui.jpg",
     href: "https://macosui.netlify.app",
     skills: ["ReactJs", "HTML/CSS", "JavaScript"],
     password: "1234",
     bullets: [
       "Developed features including a Login Page, Docks, New Folder Creation, Spotlight, Wi-Fi Connections, Context Menu, Control Center, Apple Menu, Restart Window, Contacts, Launchpad, Finder, Safari, and Maps.",
+    ],
+  },
+  {
+    slug: "upi-splitter",
+    title: "UPI Splitter",
+    category: "PWA",
+    summary:
+      "A PWA that splits a UPI amount into ₹1,999 QR payments so each scan stays under the ₹2,000 limit.",
+    image: "/images/upi-splitter.jpg",
+    logo: "/images/upi-splitter.jpg",
+    href: "",
+    skills: ["React JS", "Tailwind CSS", "Firebase"],
+    password: "",
+    bullets: [
+      "Built a progressive web app that takes a total UPI amount and automatically splits it into ₹1,999 QR codes.",
+      "Each generated payment stays under ₹2,000 so transfers follow the current UPI cap for a single scan.",
+      "Added QR generation, UPI ID payout, optional notes, and a send/receive flow that works on desktop and mobile.",
+    ],
+  },
+  {
+    slug: "weather-app",
+    title: "Weather App",
+    category: "Interface",
+    summary:
+      "A city-search weather dashboard with live conditions, location details, and a full-bleed atmospheric background.",
+    image: "/images/weather-app-mockup.jpg",
+    logo: "/images/weather-app-mockup.jpg",
+    href: "https://whatsweathernew.netlify.app",
+    skills: ["HTML/CSS", "React JS"],
+    password: "",
+    bullets: [
+      "Built a responsive weather dashboard with React.js, HTML, and CSS, featuring a full-screen background and a clean details panel.",
+      "Added city search with live temperature, cloud cover, humidity, wind, pressure, coordinates, and min/max readings.",
+      "Designed a split layout — immersive scene on the left, structured weather details on the right — that stays readable on desktop and mobile.",
+    ],
+  },
+  {
+    slug: "preserve-special-moments",
+    title: "Preserve Special Moments",
+    category: "Website",
+    summary:
+      "A resin-art studio site for Dimple Soni — wedding varmalas, bridal bouquets, and keepsakes cast in museum-grade resin.",
+    image: "/images/preserve-special-moments.jpg",
+    logo: "/images/preserve-special-moments.jpg",
+    href: "",
+    skills: ["HTML/CSS", "JavaScript"],
+    password: "",
+    bullets: [
+      "Designed and built a product website for a resin artist, with a calm editorial layout for featured collections.",
+      "Showcased preserved wedding varmalas, bridal bouquets, coasters, and framed keepsakes with clear view-details paths.",
+      "Added contact, social links, and a simple enquiry flow so clients can discuss custom resin pieces.",
     ],
   },
 ] as const;
