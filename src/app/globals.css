@@ -39,6 +39,7 @@ html.lenis body {
   overflow-x: clip !important;
   max-width: 100%;
   width: 100%;
+  background: #070708;
 }
 
 body {

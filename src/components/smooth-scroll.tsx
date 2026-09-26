@@ -8,11 +8,16 @@ function HashScroll() {
   const lenis = useLenis();
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
+    const scrollToHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
       const section = document.getElementById(hash);
       if (section) smoothScrollTo(lenis, section, -100);
-    }
+    };
+
+    const onReady = () => window.setTimeout(scrollToHash, 80);
+    window.addEventListener("portfolio:ready", onReady, { once: true });
+    const fallback = window.setTimeout(scrollToHash, 4500);
 
     const onClick = (event: MouseEvent) => {
       const link = (event.target as HTMLElement | null)?.closest("a");
@@ -41,7 +46,11 @@ function HashScroll() {
     };
 
     document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    return () => {
+      window.clearTimeout(fallback);
+      window.removeEventListener("portfolio:ready", onReady);
+      document.removeEventListener("click", onClick);
+    };
   }, [lenis]);
 
   return null;

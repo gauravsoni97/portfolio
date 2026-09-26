@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useLenis } from "lenis/react";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
+import { usePageReady } from "@/components/preloader";
 import { nav, site } from "@/data/content";
 import { cn } from "@/lib/cn";
 
@@ -17,6 +18,7 @@ function sectionFromHref(href: string) {
 
 export function Header() {
   const pathname = usePathname();
+  const ready = usePageReady();
   const [open, setOpen] = useState(false);
   const [hash, setHash] = useState("");
   const [scrolled, setScrolled] = useState(false);
@@ -61,7 +63,7 @@ export function Header() {
     <div className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
       <motion.header
         initial={{ y: -28, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={ready ? { y: 0, opacity: 1 } : { y: -28, opacity: 0 }}
         transition={{ duration: 0.55, ease }}
         className={cn(
           "mx-auto flex h-[68px] w-full max-w-[1180px] items-center justify-between rounded-full border px-4 backdrop-blur-2xl transition-colors duration-500 md:px-6",

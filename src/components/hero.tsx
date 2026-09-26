@@ -16,6 +16,7 @@ import Image from "next/image";
 import { Download } from "lucide-react";
 import { HeroSocials } from "@/components/hero-socials";
 import { ScrollHint } from "@/components/parallax";
+import { usePageReady } from "@/components/preloader";
 import { ButtonLink, Container } from "@/components/ui";
 import { heroStats, images, site } from "@/data/content";
 
@@ -79,6 +80,7 @@ function AnimatedStat({ value, label }: { value: string; label: string }) {
 }
 
 export function Hero() {
+  const ready = usePageReady();
   const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const raw = useMotionValue(0);
@@ -104,20 +106,24 @@ export function Hero() {
       </div>
 
       <motion.div
-        style={{ y: photoY, opacity: fade }}
+        initial={{ opacity: 0, scale: 1.06 }}
+        animate={ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.06 }}
+        transition={{ duration: 1.15, delay: 0.06, ease }}
         className="pointer-events-none absolute inset-y-[12%] left-[34%] right-0 z-[1] hidden items-center justify-center lg:flex"
       >
-        <div className="hero-photo-soft relative h-full w-full max-w-[820px]">
-          <Image
-            src={images.hero}
-            alt={site.name}
-            fill
-            priority
-            sizes="(min-width: 1024px) 66vw, 92vw"
-            className="object-cover object-center mix-blend-lighten"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#000_0%,rgba(0,0,0,0.72)_22%,transparent_52%)]" />
-        </div>
+        <motion.div style={{ y: photoY, opacity: fade }} className="relative h-full w-full max-w-[820px]">
+          <div className="hero-photo-soft relative h-full w-full">
+            <Image
+              src={images.hero}
+              alt={site.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 66vw, 92vw"
+              className="object-cover object-center mix-blend-lighten"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,#000_0%,rgba(0,0,0,0.72)_22%,transparent_52%)]" />
+          </div>
+        </motion.div>
       </motion.div>
 
       <Container className="relative z-10 w-full max-w-[1280px] py-6 md:py-8">
@@ -125,27 +131,20 @@ export function Hero() {
           style={{ y: textY, opacity: fade }}
           className="relative z-10 max-w-xl bg-black lg:max-w-[560px] lg:bg-transparent"
         >
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
             transition={{ duration: 0.5, ease }}
-            className="flex flex-wrap items-center gap-3"
+            className="text-[11px] uppercase tracking-[0.28em] text-white/40"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-mint/30 px-2.5 py-1 text-[10px] uppercase tracking-[0.22em] text-mint">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inset-0 animate-ping rounded-full bg-mint/70" />
-                <span className="relative h-1.5 w-1.5 rounded-full bg-mint" />
-              </span>
-              Available
-            </span>
-            <p className="text-[11px] uppercase tracking-[0.28em] text-white/40">Hey, I am</p>
-          </motion.div>
+            Hey, I am
+          </motion.p>
 
           <h1 className="mt-5 font-display leading-[0.78] tracking-[-0.055em]">
             <span className="block overflow-hidden">
               <motion.span
                 initial={{ y: "118%" }}
-                animate={{ y: "0%" }}
+                animate={ready ? { y: "0%" } : { y: "118%" }}
                 transition={{ duration: 0.8, delay: 0.04, ease }}
                 className="block text-[64px] text-white md:text-[96px] xl:text-[112px]"
               >
@@ -155,7 +154,7 @@ export function Hero() {
             <span className="block overflow-hidden">
               <motion.span
                 initial={{ y: "118%" }}
-                animate={{ y: "0%" }}
+                animate={ready ? { y: "0%" } : { y: "118%" }}
                 transition={{ duration: 0.8, delay: 0.14, ease }}
                 className="hero-name-stroke block text-[64px] md:text-[96px] xl:text-[112px]"
               >
@@ -166,7 +165,7 @@ export function Hero() {
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
             transition={{ duration: 0.55, delay: 0.26, ease }}
             className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2"
           >
@@ -180,7 +179,7 @@ export function Hero() {
 
           <motion.p
             initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
             transition={{ duration: 0.55, delay: 0.34, ease }}
             className="mt-5 max-w-md text-[15px] leading-7 text-white/75 lg:text-white/55"
           >
@@ -193,7 +192,7 @@ export function Hero() {
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
             transition={{ duration: 0.55, delay: 0.5, ease }}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
@@ -215,21 +214,28 @@ export function Hero() {
           <HeroSocials className="mt-5" />
         </motion.div>
 
-        <div className="hero-photo-soft relative mt-8 h-[38vh] w-full lg:hidden">
-          <Image
-            src={images.hero}
-            alt={site.name}
-            fill
-            sizes="100vw"
-            className="object-cover object-[center_40%] mix-blend-lighten"
-          />
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{ duration: 0.9, delay: 0.1, ease }}
+          className="relative mt-8 h-[38vh] w-full lg:hidden"
+        >
+          <div className="hero-photo-soft absolute inset-0">
+            <Image
+              src={images.hero}
+              alt={site.name}
+              fill
+              sizes="100vw"
+              className="object-cover object-[center_40%] mix-blend-lighten"
+            />
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           transition={{ duration: 0.6, delay: 0.58, ease }}
-          className="mt-10 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-5 border-t border-white/8 pt-6 sm:grid-cols-3"
+          className="mt-10 grid max-w-xl grid-cols-2 gap-x-6 gap-y-5 border-t border-white/8 pt-6"
         >
           {heroStats.map((stat) => (
             <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />

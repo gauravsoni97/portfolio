@@ -28,7 +28,6 @@ export const site = {
 
 export const heroStats = [
   { value: "5+", label: "Years Experience" },
-  { value: "85%", label: "Faster task delivery" },
   { value: "Expert", label: "UI development & animation" },
 ];
 
